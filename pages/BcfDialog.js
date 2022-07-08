@@ -60,7 +60,7 @@ export default function BcfDialog(props) {
                     {
                         isDragActive ?
                           <Typography variant="h6">Drop the BCF here ...</Typography> :
-                          <Typography variant="h6">Drag 'n' drop a BCF here, or click to select</Typography>
+                          <Typography variant="h6">Drag and drop a BCF here, or click to select</Typography>
                     }
                 </Box>
               )}

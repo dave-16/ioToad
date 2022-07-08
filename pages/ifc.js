@@ -29,14 +29,14 @@ class IFC_Page extends React.Component {
         const container = document.getElementById('viewer-container');
         const viewer = new IfcViewerAPI({container});
         
-        viewer.addAxes(1);
-        viewer.addGrid(50, 20, `#696969`, `#d3d3d3`);
+        viewer.axes.setAxes(1);
+        viewer.grid.setGrid(50, 20, `#696969`, `#d3d3d3`);
         viewer.IFC.setWasmPath('../../../../');
 
         this.viewer = viewer;
 
         window.onmousemove = viewer.prepickIfcItem;
-        window.ondblclick = viewer.addClippingPlane;
+        window.ondblclick = viewer.clipper.createPlane;
         
     }
 
@@ -59,7 +59,19 @@ class IFC_Page extends React.Component {
     };
 
     handleClickClear = () => {
-       this.viewer.releaseAllMemory();
+        this.viewer.IFC.dispose();
+        
+        const container = document.getElementById('viewer-container');
+        container.innerHTML = "";
+        this.viewer = new IfcViewerAPI({container});
+        
+        this.viewer.axes.setAxes(1);
+        this.viewer.grid.setGrid(50, 20, `#696969`, `#d3d3d3`);
+
+        this.viewer.IFC.setWasmPath('../../../../');
+        
+        window.onmousemove = this.viewer.prepickIfcItem;
+        window.ondblclick = this.clipper.createPlane;
     };
 
 
@@ -107,15 +119,15 @@ class IFC_Page extends React.Component {
                         <IconButton onClick={this.handleClick_} disabled={true}>
                             <FeedbackOutlinedIcon />
                         </IconButton>
-                        <IconButton onClick={this.handleClickClear} disabled={true}>
+                        <IconButton onClick={this.handleClickClear} disabled={false}>
                             <ClearOutlinedIcon />
                         </IconButton>
-                    </div>
+                    </div>                    
                     <Dropzone ref={this.dropzoneRef} noClick={true} noKeyboard={true} onDrop={this.onDrop}>
                         {({ getRootProps, getInputProps }) => (
-                            <div {...getRootProps({ className: 'dropzone'})}>
+                            <div {...getRootProps({ })}>
                                 <input {...getInputProps()} />
-                                <div id='viewer-container' style={{ position: 'relative', height: 'auto', width: 'auto' }}/>
+                                <div id='viewer-container' style={{ position: 'absolute', height: '93%', width: '100%' }}/>
                             </div>
                         )}
                     </Dropzone>
@@ -138,3 +150,4 @@ class IFC_Page extends React.Component {
 }
 
 export default IFC_Page;
+
