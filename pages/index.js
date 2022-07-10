@@ -5,16 +5,19 @@ import { Canvas } from "@react-three/fiber";
 import { useLoader } from "@react-three/fiber";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { IFCLoader } from 'three/examples/jsm/loaders/IFCLoader'
 import { Suspense } from "react";
-// const Model = () => {
-//     const gltf = useLoader(GLTFLoader, "./p.gltf");
-//     return (
-//       <>
-//         <primitive object={gltf.scene} scale={0.4} />
-//       </>
-//     );
-//   };
 
+const Model = () => {
+    const ifcloader = new IFCLoader();
+    ifcloader.ifcManager.setWasmPath('../../../../');
+    const ifc = useLoader(IFCLoader, "./01.ifc");
+    return (
+      <>
+        <primitive object={ifc} scale={0.4}/>
+      </>
+    );
+  };
 export default function App() {
   const keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
   const triplet = (e1, e2, e3) => keyStr.charAt(e1 >> 2) + keyStr.charAt(((e1 & 3) << 4) | (e2 >> 4)) + keyStr.charAt(((e2 & 15) << 2) | (e3 >> 6)) + keyStr.charAt(e3 & 63)
@@ -74,21 +77,29 @@ export default function App() {
                         <p>our porduct</p>
                         iocad is .............. ..........
                     </div>
-                    <div>
+                <div style={{display: 'flex', backgroundColor: 'gray', position: 'fixed'}}>
+                    <div >
                         <Image
-                            src="/iocad.jpg" 
+                            src="/iocad.png" 
                             layout="fixed"
                             width={480}
                             height={254.5}
                         />
-                        
-                        {/* <Canvas>
-                            <Suspense fallback={null}>
-                            <Model />
+                    </div>
+                    <div style={{position: 'absolute', height: '87.5%', width: '98%', top: '9%', left: '0.5%'}}>
+                        <Canvas>
+                            <ambientLight intensity={0.2} />
+                            <pointLight position={[10, 10, 10]} />
+                            {/* <Suspense fallback={null}> */}
+                            <mesh position={[0, 0, 0]}>
+                                <Model />
+                            </mesh>
+                            {/* <Environment preset="forest" background />  */}
+                            {/* </Suspense> */}
                             <OrbitControls />
-                            <Environment preset="forest" background /> 
-                            </Suspense>
-                        </Canvas> */}
+                        </Canvas>
+                    </div>
+                        
                     </div>
                     
                 </div>
