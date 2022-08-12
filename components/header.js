@@ -17,7 +17,7 @@ export const Header = () => (
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                 <HeaderButton name='Home' url=''/>
-                <HeaderButton name='ioCAD' url='ioCAD'/>
+                <HeaderButton name='ioCAD' url='iocad'/>
                 <HeaderButton name='BIM' url='BIM'/>
                 <HeaderButton name='Automation' url='Automation'/>
                 <HeaderButton name='Offshoring' url='Offshoring'/>
