@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
@@ -6,10 +5,6 @@ import {Footer} from '../components/footer'
 export default function App() {
   return (
     <div style={{width: '100%', background: '#020221'}}>
-        <Head>
-            <title>ioToad</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        </Head>
         <PageBackground />
         <main style={{position: 'absolute', width: '100%'}}>
           <Header />

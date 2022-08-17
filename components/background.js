@@ -52,11 +52,11 @@ export const PageBackground = () => {
         },
         particles: {
           color: {
-            value: "#666685",
+            value: ["#4285f4", "#34A853", "#FBBC05", "#EA4335"],
           },
           links: {
-            color: "#666685",
-            distance: 150,
+            color: "random",
+            distance: 400,
             enable: true,
             opacity: 0.5,
             width: 1,
@@ -65,13 +65,18 @@ export const PageBackground = () => {
             enable: true,
           },
           move: {
+            attract: {
+              enable: false,
+              rotate: {
+                x: 600,
+                y: 1200
+              }
+            },
             direction: "none",
             enable: true,
-            outModes: {
-              default: "out",
-            },
-            random: true,
-            speed: 2,
+            outModes: "none",
+            random: false,
+            speed: 0.5,
             straight: false,
           },
           number: {
@@ -79,34 +84,75 @@ export const PageBackground = () => {
               enable: true,
               area: 800,
             },
+            limit: 0,
             value: 40,
           },
           opacity: {
-            value: 0.5,
+            animation: {
+              enable: true,
+              minimumValue: 0.3,
+              speed: 2,
+              sync: false
+            },
+            random: false,
+            value: 0.8
           },
           shape: {
+            character: {
+              fill: false,
+              font: "Verdana",
+              style: "",
+              value: "*",
+              weight: "400"
+            },
+            image: {
+              height: 100,
+              replaceColor: true,
+              src: "./SquareGrid3.svg",
+              width: 100
+            },
+            polygon: {
+              sides: 5
+            },
+            stroke: {
+              color: "#000000",
+              width: 0
+            },
             type: "circle",
           },
           size: {
-            value: { min: 2, max: 3 },
+            animation: {
+              enable: false,
+              minimumValue: 0.1,
+              speed: 40,
+              sync: false
+            },
+            random: true,
+            value: 1
           },
         },
-        
-	    // polygon: {
-	    //     enable: true,
-	    //     scale: 30,
-	    //     type: "inline",
-	    //     move: {
-	    //         radius: 100
-	    //     },
-	    //     url: "./About.svg",
-	    //     draw: {
-	    //         enable: true,
-	    //         stroke: {
-	    //             color: "#666685",
-	    //         }
-	    //     }
-	    // },
+        polygon: {
+            draw: {
+                enable: false,
+                lineColor: "rgba(255,255,255,0.2)",
+                lineWidth: 0.5,
+                // stroke: {
+                //     color: "#666685",
+                // }
+            },
+            enable: true,
+            move: {
+                radius: 5,
+            },
+            position: {
+              x: -10,
+              y: -10
+            },
+            inlineArrangement: "equidistant",
+            scale: 15,
+            type: "inline",
+            url: "./SquareGrid3.svg",
+        },
         detectRetina: true,
       }}
     />

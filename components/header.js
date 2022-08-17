@@ -1,8 +1,13 @@
+import Head from 'next/head';
 import {HeaderButton} from '../components/header_button'
 import Image from 'next/image';
 
 export const Header = () => (
     <>
+        <Head>
+            <title>ioToad</title>
+            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        </Head>
         <div style={{ backgroundColor: 'none' , width: '100%'}}>
             <div >
                 <div style={{display: 'inline-flex', width: '100%', alignItems: 'center', justifyContent: 'space-between', padding: '10px 30px'}}>
