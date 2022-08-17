@@ -5,7 +5,7 @@ import {Footer} from '../components/footer';
 import Image from 'next/image';
 import Slider from '@mui/material/Slider';
 
-export default function bim() {
+export default function Bim() {
     const [value, setValue] = useState(200);
     const [value2, setValue2] = useState(200);
     const handleChange = (event, newValue) => {
