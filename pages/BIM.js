@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import {PageBackground} from '../components/background.js';
 import {Header} from '../components/header';
 import {Footer} from '../components/footer';
