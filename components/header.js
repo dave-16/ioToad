@@ -20,7 +20,7 @@ export const Header = () => (
                     <HeaderButton name='Login'/>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
                 <HeaderButton name='Home' url=''/>
                 <HeaderButton name='ioCAD' url='iocad'/>
                 <HeaderButton name='BIM' url='BIM'/>
