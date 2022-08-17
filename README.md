@@ -2,13 +2,12 @@
 
 
 ## Homepage
-
 - no work done empty page
-- [ ] Homepage not completed
+- [ ] Homepage text not completed
 - [ ] Login system not completed: in web3 and web2
-- [ ] Company info page not completed
-- [ ] ioCAD app download page not completed
-- [ ] IFC page link not completed
+- Company info page completed
+- ioCAD app download page completed
+- IFC page link completed
 
 ## IFC-page
 - IFC viewer completed: use '/ifc' to access
