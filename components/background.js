@@ -108,7 +108,7 @@ export const PageBackground = () => {
             image: {
               height: 100,
               replaceColor: true,
-              src: "./SquareGrid3.svg",
+              src: "./SquareGrid.svg",
               width: 100
             },
             polygon: {
@@ -151,7 +151,7 @@ export const PageBackground = () => {
             inlineArrangement: "equidistant",
             scale: 15,
             type: "inline",
-            url: "./SquareGrid3.svg",
+            url: "./SquareGrid.svg",
         },
         detectRetina: true,
       }}
