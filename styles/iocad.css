@@ -1,0 +1,58 @@
+.wrapper_div {
+    width: 100%;
+    background: #020221;
+}
+.container_main {
+    position: absolute;
+    width: 100%;
+}
+.download_div {
+    display: grid;
+    place-items: center;
+    margin: 20px 0px;
+}
+.content_div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.iocad_discription_div {
+    color: #f8f172;
+    text-align: center;
+    max-width: 40%;
+    margin: 20px;
+}
+@media screen and (max-width: 932px) {
+    .iocad_discription_div {
+        max-width: 80%;
+    }
+}
+.iocad_model_div {
+    margin: 20px;
+    height: fit-content;
+    background-color: gray;
+}
+.iocad_picture {
+    z-index: 2;
+    pointer-events: none;
+    position: absolute;
+    width: 480px;
+    height: 270px;
+}
+.iocad_model {
+    left: 0px;
+    top: 0px;
+    width: 480px;
+    height: 263px;
+}
+@media screen and (max-width: 500px) {
+    .iocad_model {
+        max-width: 80%;
+    }
+    .iocad_model_div {
+        max-width: 80%;
+    }
+    .iocad_picture {
+        max-width: 80%;
+    }
+}

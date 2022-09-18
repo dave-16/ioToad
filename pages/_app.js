@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import '../styles/headerButton.css'
+import '../styles/iocad.css'
+import '../styles/header.css'
 import '../styles/downloadButton.css'
 
 function MyApp({ Component, pageProps }) {

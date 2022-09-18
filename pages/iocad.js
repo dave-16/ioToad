@@ -19,17 +19,17 @@ const Model = () => {
 };
 export default function iocad() {
     return (
-      <div style={{width: '100%', background: '#020221'}}>
+      <div className='wrapper_div'>
         <PageBackground />
-        <main style={{position: 'absolute', width: '100%'}}>
+        <main className="container_main">
           <Header />
-          <div style={{display: 'grid', placeItems: 'center', margin: '20px 0px'}}>
-            <div className="download_button" style={{fontSize: '30px'}}>
+          <div className='download_div'>
+            <div className="download_button">
               Download ioCAD
             </div>
           </div>
-          <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-            <div style={{color: '#f8f172', textAlign: 'center', maxWidth: '40%',margin: '20px'}}>
+          <div className='content_div'>
+            <div className='iocad_discription_div'>
               <h1>ioCAD</h1>
               <h2>A software for virtual construction.</h2>
               <p>.............. ........ .......... .............
@@ -49,25 +49,20 @@ export default function iocad() {
               .............. ........ .......... .............
               .............. ........ .......... ............. </p>
             </div>
-            <div style={{margin: '20px', height: 'fit-content', backgroundColor: 'gray'}}>
-              <div style={{ zIndex: '2', pointerEvents: 'none', position: 'absolute'}}>
+            <div className='iocad_model_div'>
+              <div className='iocad_picture'>
                   <Image
                       src="/iocad.png" 
-                      layout="fixed"
-                      width={480}
-                      height={270}
+                      layout="fill"
                   />
               </div>
-              <div style={{left: '0px', top: '0px', width: '480px', height: '263px'}}>
+              <div className='iocad_model'>
                   <Canvas>
                       <ambientLight intensity={0.2} />
                       <pointLight position={[10, 10, 10]} />
-                      {/* <Suspense fallback={null}> */}
                       <mesh position={[0, 0, 0]}>
                           <Model />
                       </mesh>
-                      {/* <Environment preset="forest" background />  */}
-                      {/* </Suspense> */}
                       <OrbitControls />
                   </Canvas>
               </div>
