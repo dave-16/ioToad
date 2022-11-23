@@ -7,7 +7,7 @@ import {useSession, signIn, signOut} from 'next-auth/react'
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 
-export default function signin() {
+export default function Account() {
     const {data: session} = useSession({required: true,});
     const [name, setName] = useState('');
     if (name === '' && session) {
