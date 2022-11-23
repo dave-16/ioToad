@@ -21,7 +21,7 @@ const Model = () => {
     </>
   );
 };
-export default function iocad() {
+export default function Iocad() {
 
   const [signinComponent, setSigninComponent] = useState(<div/>);
     const {data: session} = useSession();
