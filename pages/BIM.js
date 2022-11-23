@@ -48,11 +48,11 @@ export default function Bim() {
     }
     return (
       <div style={{width: '100%', background: '#020221'}}>
-        <PageBackground />
-        <main style={{position: 'absolute', width: '100%'}}>
           <Header />
+        {/* <PageBackground /> */}
+        <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
-            <div style={{color: '#f8f172', textAlign: 'center', maxWidth: '800px'}}>
+            <div style={{textAlign: 'center', maxWidth: '800px'}}>
               <div style={{width: '50%', marginLeft: '25%'}}>
                 <Image
                     src="/bimteam.svg" 

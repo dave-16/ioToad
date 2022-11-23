@@ -9,16 +9,21 @@
     justify-content: space-between;
     padding: 10px 30px;
 }
-.icon_div, .login_div {
-    width: 135px;
+.login_div {
+    width: 200px;
+}
+.login_div {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 .hamburger_button {
-    color: #f8f172;
+    color: #d4d8d5;
     width: 100px ;
 }
 .bottom_div {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 .bottom_div_media {
@@ -30,7 +35,7 @@
     margin-bottom: 30px;
     border-width: 0px 1px;
     border-style: solid;
-    border-image: linear-gradient(to bottom, #000015, #f8f172, #000015)1 100%;
+    border-image: linear-gradient(to bottom, #000015, #d4d8d5, #000015)1 100%;
 }
 .hamburger_button_div {
     display: none;
@@ -47,16 +52,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 125px;
+    min-width: 100px;
     height: 50px;
     padding: 5px;
     margin: 5px;
-    border: 10px;
+    border: solid #d4d8d566 3px;
     outline: none;
     cursor: pointer;
     position: relative;
     z-index: 0;
     border-radius: 10px;
+    user-select: none;
 }
 
 .header_button:before {
@@ -98,7 +104,7 @@
     left: 0;
     top: 0;
     border-radius: 10px;
-    opacity: 30%;
+    /* opacity: 30%; */
 }
 
 @keyframes glowing {
@@ -109,5 +115,5 @@
 .breaker_hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, #000015, #f8f172, #000015);
+    background-image: linear-gradient(to right, #000015, #d4d8d5, #000015);
 }

@@ -1,16 +1,18 @@
 import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
+import {LottieViewer} from '../components/lottie'
+
 
 export default function App() {
   return (
     <div style={{width: '100%', background: '#020221'}}>
-        <PageBackground />
-        <main style={{position: 'absolute', width: '100%'}}>
-          <Header />
+        <Header />
+        <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
-            <div style={{color: '#f8f172', textAlign: 'center', maxWidth: '800px'}}>
+            <div style={{textAlign: 'center', maxWidth: '800px'}}>
                 <h1>ioToad</h1>
+                <LottieViewer choice={'design'} width={490} height={245} loop={false}/>
                 <h3>Real Assistance for Virtual Construction</h3>
                 <p>.............. ........ .......... .............
                 .............. ........ .......... .............

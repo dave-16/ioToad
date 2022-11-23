@@ -1,16 +1,16 @@
 
-import {PageBackground} from '../components/background.js'
+// import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
 import Image from 'next/image';
 export default function offshoring() {
     return (
       <div style={{width: '100%', background: '#020221'}}>
-        <PageBackground />
-        <main style={{position: 'absolute', width: '100%'}}>
           <Header />
+        {/* <PageBackground /> */}
+        <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
-            <div style={{color: '#f8f172', padding: '20px', textAlign: 'center', maxWidth: '800px'}}>
+            <div style={{padding: '20px', textAlign: 'center', maxWidth: '800px'}}>
               <div style={{width: '30%', marginLeft: '35%'}}>
                 <Image
                     src="/Offshoring.svg" 

@@ -1,22 +1,19 @@
-import {PageBackground} from '../components/background.js'
+// import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
 import Image from 'next/image';
+import {LottieViewer} from '../components/lottie'
+
 export default function about() {
     return (
       <div style={{width: '100%', background: '#020221'}}>
-        <PageBackground />
-        <main style={{position: 'absolute', width: '100%'}}>
-          <Header />
+        {/* <PageBackground /> */}
+        <Header />
+        <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
-            <div style={{color: '#f8f172', textAlign: 'center', maxWidth: '800px'}}>
-              <div style={{width: '30%', marginLeft: '35%'}}>
-                <Image
-                  src="/iotoadlogo.png" 
-                  layout="responsive"
-                  width={50}
-                  height={50}
-                />
+            <div style={{textAlign: 'center', maxWidth: '800px'}}>
+              <div>
+              <LottieViewer choice={'logo'} width={300} height={250} loop={true}/>
               </div>
               <h1>About ioToad</h1>
               <p>At IOToad our goal is to provide businesses with outsourced engineering and automation services. 

@@ -1,5 +1,6 @@
-
-import {PageBackground} from '../components/background.js'
+import Link from 'next/link'
+import {useSession, signIn, signOut} from 'next-auth/react'
+// import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
 import Image from 'next/image';
@@ -7,6 +8,9 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { IFCLoader } from 'three/examples/jsm/loaders/IFCLoader';
+import { SignInPopup } from '../components/signin_popup.js'
+import { useState } from 'react';
+
 const Model = () => {
   const ifcloader = new IFCLoader();
   ifcloader.ifcManager.setWasmPath('../../../../');
@@ -18,28 +22,34 @@ const Model = () => {
   );
 };
 export default function iocad() {
+
+  const [signinComponent, setSigninComponent] = useState(<div/>);
+    const {data: session} = useSession();
+    function downloadClicked() {
+      if (session) {
+        
+      } else {
+        setSigninComponent(<SignInPopup />);
+      }
+    }
     return (
       <div className='wrapper_div'>
-        <PageBackground />
-        <main className="container_main">
-          <Header />
+        {/* <PageBackground /> */}
+        {signinComponent}
+        <Header />
+        <main className="container_main" style={{padding: '5%'}}>
           <div className='download_div'>
-            <div className="download_button">
-              Download ioCAD
-            </div>
+            {/* <Link href="/about"> */}
+              <div className="download_button" onClick={downloadClicked} style={{color: '#020221'}}>
+                Download ioCAD
+              </div>
+            {/* </Link> */}
           </div>
           <div className='content_div'>
             <div className='iocad_discription_div'>
               <h1>ioCAD</h1>
-              <h2>A software for virtual construction.</h2>
+              <p>A software for virtual construction.</p>
               <p>.............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
-              .............. ........ .......... .............
               .............. ........ .......... .............
               .............. ........ .......... .............
               .............. ........ .......... .............

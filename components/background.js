@@ -1,18 +1,11 @@
-
 import Particles from 'react-tsparticles';
 import { loadFull } from "tsparticles";
 
 export const PageBackground = () => {
-    
   const particlesInit = async (main) => {
     console.log(main);
-
-    // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(main);
   };
-
   const particlesLoaded = (container) => {
     console.log(container);
   };
@@ -22,6 +15,7 @@ export const PageBackground = () => {
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
+        fps_limit: 60,
         background: {
           color: {
             value: "#020221",
@@ -29,6 +23,7 @@ export const PageBackground = () => {
         },
         fpsLimit: 120,
         interactivity: {
+          detect_on: "canvas",
           events: {
             onClick: {
               enable: true,
@@ -52,11 +47,11 @@ export const PageBackground = () => {
         },
         particles: {
           color: {
-            value: ["#4285f4", "#34A853", "#FBBC05", "#EA4335"],
+            value: ["#393982", "#2c2c82", "#19196c", "#0a0a6a"],
           },
           links: {
             color: "random",
-            distance: 400,
+            distance: 250,
             enable: true,
             opacity: 0.5,
             width: 1,
@@ -72,9 +67,9 @@ export const PageBackground = () => {
                 y: 1200
               }
             },
-            direction: "none",
+            direction: "outside",
             enable: true,
-            outModes: "none",
+            outModes: "bounce",
             random: false,
             speed: 0.5,
             straight: false,
@@ -106,10 +101,10 @@ export const PageBackground = () => {
               weight: "400"
             },
             image: {
-              height: 100,
               replaceColor: true,
               src: "./SquareGrid.svg",
-              width: 100
+              height: 115,
+              width: 264
             },
             polygon: {
               sides: 5
@@ -145,11 +140,11 @@ export const PageBackground = () => {
                 radius: 5,
             },
             position: {
-              x: -10,
-              y: -10
+              x: -35,
+              y: 0
             },
             inlineArrangement: "equidistant",
-            scale: 15,
+            scale: 10,
             type: "inline",
             url: "./SquareGrid.svg",
         },

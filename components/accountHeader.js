@@ -8,7 +8,7 @@ import {IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import {LottieViewer} from '../components/lottie'
 
-export const Header = () => {
+export const AccountHeader = () => {
     const {data: session} = useSession();
     const [showButtons, setshowButtons] = useState(false);
     const hamburgerButton = () => {
@@ -55,35 +55,21 @@ export const Header = () => {
                             </div>
                         :
                             <div className='login_div'>
-                                <div className="header_button" onClick={() => signIn("google")}>
+                                <button className="header_button" onClick={() => signIn("google")} style={{border: 'solid white 2px'}}>
                                     <p style={{margin: '2px', fontSize: '20px', textAlign: 'center', fontSize: '1.275em', color: '#d4d8d5', fontFamily: '"Courier New", Courier, monospace'}}>
                                         Sign in
                                     </p>
-                                </div>
+                                </button>
                             </div>
                     }
                 </div>
                 <div className='bottom_div'>
-                    <HeaderButton name='Home' url=''/>
-                    <HeaderButton name='ioCAD' url='iocad'/>
-                    <HeaderButton name='BIM' url='BIM'/>
-                    <HeaderButton name='Automation' url='Automation'/>
-                    <HeaderButton name='Offshoring' url='Offshoring'/>
-                    <HeaderButton name='About' url='About'/>
+                    <HeaderButton name='Account Settings' url=''/>
+                    <HeaderButton name='Payment Plans' url=''/>
+                    <HeaderButton name='Download ioCAD' url=''/>
+                    {/* <HeaderButton name='Download addons' url=''/> */}
+                    {/* <HeaderButton name='File Transfer' url=''/> */}
                 </div>
-                {
-                    showButtons ? 
-                        <div className='bottom_div_media'>
-                            <HeaderButton name='Home' url=''/>
-                            <HeaderButton name='ioCAD' url='iocad'/>
-                            <HeaderButton name='BIM' url='BIM'/>
-                            <HeaderButton name='Automation' url='Automation'/>
-                            <HeaderButton name='Offshoring' url='Offshoring'/>
-                            <HeaderButton name='About' url='About'/>
-                        </div>
-                    :
-                        null
-                }
                 <hr className='breaker_hr' style={{ border: '0', height: '1px', backgroundImage: 'linear-gradient(to right, #000015, #d4d8d5, #000015)'}}/>
             </div>
         </>
