@@ -1,4 +1,6 @@
 // import {PageBackground} from '../components/background.js'
+import Link from 'next/link'
+
 import {AccountHeader} from '../../components/accountHeader'
 import {Footer} from '../../components/footer'
 import Image from 'next/image';
@@ -8,11 +10,21 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 
 export default function Account() {
-    const {data: session} = useSession({required: true,});
+    const {data: session} = useSession();
     const [name, setName] = useState('');
+    const [content, setContent] = useState(
+      (<Link href={`/Account/Signin`}><div className="header_button">
+        <p>Sign in</p>
+      </div></Link>)
+    );
+    var mycookie;
     if (name === '' && session) {
         setName(session.user.name)
-        console.log(session)
+        setContent(<div className="header_button" onClick={() => signOut()}>
+          <p>Sign out</p>
+        </div>)
+        mycookie = document.cookie;
+        console.log(mycookie);
     }
     
     return (
@@ -22,9 +34,7 @@ export default function Account() {
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
             <h2>Account Settings</h2>
             <p>Welcome {name}</p>
-            <div className="header_button" onClick={() => signOut()}>
-                <p>Sign out</p>
-            </div>
+            {content}
           </div>
           <Footer />
         </main>
