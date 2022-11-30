@@ -55,11 +55,13 @@ export const Header = () => {
                             </div>
                         :
                             <div className='login_div'>
-                                <div className="header_button" onClick={() => signIn("google")}>
-                                    <p style={{margin: '2px', fontSize: '20px', textAlign: 'center', fontSize: '1.275em', color: '#d4d8d5', fontFamily: '"Courier New", Courier, monospace'}}>
-                                        Sign in
-                                    </p>
-                                </div>
+                                <Link href={`/Account/Signin`}>
+                                    <div className="header_button">
+                                        <p style={{margin: '2px', fontSize: '20px', textAlign: 'center', fontSize: '1.275em', color: '#d4d8d5', fontFamily: '"Courier New", Courier, monospace'}}>
+                                            Sign in
+                                        </p>
+                                    </div>
+                                </Link>
                             </div>
                     }
                 </div>

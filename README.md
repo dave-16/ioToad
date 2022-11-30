@@ -2,9 +2,9 @@
 
 
 ## Homepage
-- no work done empty page
 - [ ] Homepage text not completed
-- [ ] Login system not completed: in web3 and web2
+- Login system : in web2
+- [ ] Login system not completed: in web3
 - Company info page completed
 - ioCAD app download page completed
 - IFC page link completed

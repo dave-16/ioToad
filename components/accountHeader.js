@@ -23,7 +23,7 @@ export const AccountHeader = () => {
             <div className='header_container_div' >
                 <div className='top_div'>
                     <Link href={`/`}>
-                        <div className='icon_div'>
+                        <div className='icon_div' style={{width: '200px'}}>
                             <LottieViewer choice={'logo'} width={60} height={50} loop={true}/>
                         </div>
                     </Link>
@@ -43,7 +43,7 @@ export const AccountHeader = () => {
                             <div className='login_div'>
                                 <Link href={`/Account`}>
                                     <Image
-                                        src={session.user.image} 
+                                        src={session.user.image}
                                         alt='photo' 
                                         layout="fixed" 
                                         width={35}
@@ -55,21 +55,35 @@ export const AccountHeader = () => {
                             </div>
                         :
                             <div className='login_div'>
-                                <button className="header_button" onClick={() => signIn("google")} style={{border: 'solid white 2px'}}>
-                                    <p style={{margin: '2px', fontSize: '20px', textAlign: 'center', fontSize: '1.275em', color: '#d4d8d5', fontFamily: '"Courier New", Courier, monospace'}}>
-                                        Sign in
-                                    </p>
-                                </button>
+                                <Link href={`/Account/Signin`}>
+                                    <div className="header_button">
+                                        <p style={{margin: '2px', fontSize: '20px', textAlign: 'center', fontSize: '1.275em', color: '#d4d8d5', fontFamily: '"Courier New", Courier, monospace'}}>
+                                            Sign in
+                                        </p>
+                                    </div>
+                                </Link>
                             </div>
                     }
                 </div>
                 <div className='bottom_div'>
-                    <HeaderButton name='Account Settings' url=''/>
-                    <HeaderButton name='Payment Plans' url=''/>
-                    <HeaderButton name='Download ioCAD' url=''/>
+                    <HeaderButton name='Account Settings' url='Account/'/>
+                    <HeaderButton name='Payment Plans' url='Account/PaymentPlan'/>
+                    <HeaderButton name='Download ioCAD' url='Account/DownloadioCAD'/>
                     {/* <HeaderButton name='Download addons' url=''/> */}
                     {/* <HeaderButton name='File Transfer' url=''/> */}
                 </div>
+                {
+                    showButtons ? 
+                        <div className='bottom_div_media'>
+                            <HeaderButton name='Account Settings' url='Account/'/>
+                            <HeaderButton name='Payment Plans' url='Account/PaymentPlan'/>
+                            <HeaderButton name='Download ioCAD' url='Account/DownloadioCAD'/>
+                            {/* <HeaderButton name='Download addons' url=''/> */}
+                            {/* <HeaderButton name='File Transfer' url=''/> */}
+                        </div>
+                    :
+                        null
+                }
                 <hr className='breaker_hr' style={{ border: '0', height: '1px', backgroundImage: 'linear-gradient(to right, #000015, #d4d8d5, #000015)'}}/>
             </div>
         </>

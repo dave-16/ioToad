@@ -1,6 +1,7 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from 'next-auth/providers/google';
 import { FirestoreAdapter } from "@next-auth/firebase-adapter";
+import { db } from '../../../firebase.config';
 
 export default NextAuth({
     providers: [
@@ -10,10 +11,17 @@ export default NextAuth({
         }),
         // ...add more providers here
     ],
+    pages: {
+      // signIn: '/api/auth/callback/google',
+      error: '/Account/Signin',
+      signOut: '/iocad',
+      newUser: '/Account',
+    },
     theme: {
         colorScheme: "dark",
     },
     secret: process.env.JWT_SECRET,
+    adapter: (db),
     adapter: FirestoreAdapter({
       apiKey: process.env.FIREBASE_API_KEY,
       appId: process.env.FIREBASE_APP_ID,

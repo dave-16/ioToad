@@ -21,7 +21,7 @@ const Model = () => {
     </>
   );
 };
-export default function Iocad() {
+export default function iocad() {
 
   const [signinComponent, setSigninComponent] = useState(<div/>);
     const {data: session} = useSession();
@@ -39,11 +39,11 @@ export default function Iocad() {
         <Header />
         <main className="container_main" style={{padding: '5%'}}>
           <div className='download_div'>
-            {/* <Link href="/about"> */}
+            <Link href="/Account/DownloadioCAD">
               <div className="download_button" onClick={downloadClicked} style={{color: '#020221'}}>
                 Download ioCAD
               </div>
-            {/* </Link> */}
+            </Link>
           </div>
           <div className='content_div'>
             <div className='iocad_discription_div'>
