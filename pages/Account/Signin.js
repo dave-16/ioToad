@@ -8,7 +8,7 @@ import { SignInPopup } from '../../components/signin_popup';
 import { useState } from 'react';
 import { Account } from './index';
 
-export default function signin() {
+export default function Signin() {
   const {data: session} = useSession();
     return (
       <>
