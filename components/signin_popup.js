@@ -13,7 +13,7 @@ import { Button, Form } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 export const SignInPopup = () => {
-  const {user,login} = useAuth();
+  const {user,login,google} = useAuth();
   const router = useRouter();
     const [display, setDisplay] = useState('block');
     function stopDisplaying() {
@@ -93,7 +93,7 @@ export const SignInPopup = () => {
         <Button className='ZbtnSub' variant="primary" type="submit">
           Login
         </Button>
-        <Button className='ZbtnSub' variant="primary" >
+        <Button className='ZbtnSub' variant="primary"onClick={google} >
           Google
         </Button>
       </Form>

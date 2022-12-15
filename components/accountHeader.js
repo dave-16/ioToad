@@ -15,10 +15,26 @@ export const AccountHeader = () => {
     const { user, logout } = useAuth()
     // const {data: session} = useSession();
     const [showButtons, setshowButtons] = useState(false);
+    const [name,setName] = useState('');
     const hamburgerButton = () => {
         setshowButtons(!showButtons);
+       
+        
     }
-    return (
+    const [content, setContent] = useState(
+        (<Link href={`/Account/Signin`}><div className="header_button">
+          <p>Sign in</p>
+        </div></Link>)
+      );
+      var mycookie;
+      if (name === '' && user) {
+          setName('NA')
+          setContent(<div className="header_button" onClick={logout}>
+            <p>Sign out</p>
+          </div>)
+          mycookie = document.cookie;
+          console.log(mycookie);
+      }    return (
         <>
             <Head>
                 <title>ioToad</title>
@@ -55,7 +71,8 @@ export const AccountHeader = () => {
                                         style={{borderRadius: '50%'}}   
                                     />
                                 </Link>
-                                <HeaderButton  name={user.email} style={{width: '200px'}} url='Account/'/>
+                                <HeaderButton  name={name} style={{width: '200px'}} url='Account/'/>
+                                {content}
                             </div>
                         :
                             <div className='login_div'>

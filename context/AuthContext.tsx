@@ -4,12 +4,13 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider ,
   signOut,
 } from 'firebase/auth'
 import { auth } from '../config/firebase'
 
 const AuthContext = createContext<any>({})
-
+const provider = new GoogleAuthProvider();
 export const useAuth = () => useContext(AuthContext)
 
 export const AuthContextProvider = ({
@@ -46,16 +47,20 @@ export const AuthContextProvider = ({
     console.log('auth auth auth',auth)
     return signInWithEmailAndPassword(auth, email, password)
   }
+  const google = () => {
+    
+    return signInWithPopup(auth, provider)
+  }
 
-  const logout = async () => {
+  const logout =  () => {
     console.log('us us us us ',auth)
     setUser(null)
     console.log('use use use',auth)
-   return  await signOut(auth)
+   return  signOut(auth)
   }
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout ,google }}>
       {loading ? null : children}
     </AuthContext.Provider>
   )

@@ -8,19 +8,21 @@ import { useState } from 'react';
 import { Account } from './index';
 import { useAuth } from '../../context/AuthContext';
 import {Login} from '../login'
-import { Form } from 'react-bootstrap';
+import Router, { useRouter } from 'next/router';
 
 export default function Signin() {
   // const {data: session} = useSession();
   const {user,logout} =useAuth();
+  const router = useRouter();
    
   const handleSignout = async (e) => {
     e.preventDefault()
 
     console.log(user)
     try {
-      await logout(user)
-      router.push('/')
+      
+      Router.push('/')
+      logout
     } catch (err) {
       console.log(err)
     }
@@ -35,11 +37,9 @@ export default function Signin() {
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
             <h2>Account Settings</h2>
             <p>You are already signed in</p>
-            <Form onSubmit={handleSignout}>
-            <Button className="header_button" type='submit'>
+            <div className="header_button" onClick={handleSignout} >
                 <p>Sign out</p>
-            </Button>
-            </Form>
+            </div>
           </div>
           <Footer />
         </main>

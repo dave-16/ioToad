@@ -9,6 +9,7 @@ import {LottieViewer} from '../../components/lottie'
 import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { Button } from 'react-bootstrap';
 
 export default function Account() {
     // const {data: session} = useSession();
@@ -20,11 +21,11 @@ export default function Account() {
       </div></Link>)
     );
     var mycookie;
-    if (name === '' && user) {
-        setName(user.email)
-        setContent(<div className="header_button" onClick={() => logout}>
+    if ( user && name === '') {
+        setName(user.uid)
+        setContent(<Button className="header_button" onClick={logout}>
           <p>Sign out</p>
-        </div>)
+        </Button>)
         mycookie = document.cookie;
         console.log(mycookie);
     }
