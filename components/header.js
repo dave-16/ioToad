@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link'
-import {useSession, signIn, signOut} from 'next-auth/react'
 import {HeaderButton} from '../components/header_button'
 import Image from 'next/image';
 import {IconButton} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import {LottieViewer} from '../components/lottie'
+import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router'
+
 
 export const Header = () => {
-    const {data: session} = useSession();
+    // const {data: session} = useSession();
+    const { user, logout } = useAuth()
+    const router = useRouter()
     const [showButtons, setshowButtons] = useState(false);
     const hamburgerButton = () => {
         setshowButtons(!showButtons);
@@ -39,11 +43,11 @@ export const Header = () => {
                         </IconButton>
                     </div>
                     {
-                        session ?
+                        user ?
                             <div className='login_div'>
                                 <Link href={`/Account`}>
-                                    <Image
-                                        src={session.user.image} 
+                                    <image
+                                        src={user.image} 
                                         alt='photo' 
                                         layout="fixed" 
                                         width={35}
@@ -51,7 +55,7 @@ export const Header = () => {
                                         style={{borderRadius: '50%'}}   
                                     />
                                 </Link>
-                                <HeaderButton name={session.user.name} url='Account'/>
+                                <HeaderButton name={user.name} url='Account'/>
                             </div>
                         :
                             <div className='login_div'>

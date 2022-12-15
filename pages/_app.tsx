@@ -1,21 +1,36 @@
+//@ts-nocheck
 import '../styles/globals.css'
 import '../styles/iocad.css'
 import '../styles/header.css'
 import '../styles/downloadButton.css'
+import '../styles/auth.css'
 import {LottieViewer} from '../components/lottie'
 import {useEffect, useState} from 'react';
-import {SessionProvider} from 'next-auth/react';
+import { AuthContextProvider } from '../context/AuthContext'
+import { useRouter } from 'next/router'
+import ProtectedRoute from '../components/ProtectedRoute';
+import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps, session }) {
+const noAuthRequired = ['/','/login','/signup']
+
+function MyApp({ Component, pageProps}:AppProps) {
   const size = useWindowSize();
-  return <SessionProvider session={session}>
+  const router = useRouter()
+  return <AuthContextProvider >
+
     <div  style={{position: 'fixed', top: '0', left:'0', zIndex: '-1',  backgroundColor: '#020221', width: '100%', height: '100%'}}>
       <LottieViewer choice={'grid'} width={size.width} height={size.height} loop={false}/>
     </div>
     <div>
+      {noAuthRequired.includes(router.pathname)? (
       <Component {...pageProps}/>
+      ):(
+        
+        <Component {...pageProps} />
+     
+      )}
     </div>
-  </SessionProvider>
+  </AuthContextProvider>
 }
 
 export default MyApp

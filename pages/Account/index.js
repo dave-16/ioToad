@@ -3,14 +3,16 @@ import Link from 'next/link'
 
 import {AccountHeader} from '../../components/accountHeader'
 import {Footer} from '../../components/footer'
-import Image from 'next/image';
+
 import {LottieViewer} from '../../components/lottie'
-import {useSession, signIn, signOut} from 'next-auth/react'
+
 import { TextField } from '@mui/material';
 import { useState } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 export default function Account() {
-    const {data: session} = useSession();
+    // const {data: session} = useSession();
+    const {user , logout} =useAuth();
     const [name, setName] = useState('');
     const [content, setContent] = useState(
       (<Link href={`/Account/Signin`}><div className="header_button">
@@ -18,9 +20,9 @@ export default function Account() {
       </div></Link>)
     );
     var mycookie;
-    if (name === '' && session) {
-        setName(session.user.name)
-        setContent(<div className="header_button" onClick={() => signOut()}>
+    if (name === '' && user) {
+        setName(user.email)
+        setContent(<div className="header_button" onClick={() => logout}>
           <p>Sign out</p>
         </div>)
         mycookie = document.cookie;
@@ -33,7 +35,7 @@ export default function Account() {
         <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
             <h2>Account Settings</h2>
-            <p>Welcome {name}</p>
+            <p className='Zuseremail'>Welcome {name}</p>
             {content}
           </div>
           <Footer />

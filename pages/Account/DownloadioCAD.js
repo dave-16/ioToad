@@ -1,14 +1,14 @@
 // import {PageBackground} from '../components/background.js'
 import {AccountHeader} from '../../components/accountHeader'
 import {Footer} from '../../components/footer'
-import {useSession, signIn, signOut} from 'next-auth/react'
 import Link from 'next/link'
 import { useState } from 'react';
 import {HeaderButton} from '../../components/header_button'
+import { useAuth } from '../../context/AuthContext';
 
 var firstTimeLoad = true;
 export default function DownloadioCAD() {
-  const {data: session} = useSession({required: true,});
+  const {user, logout} = useAuth({required: true,});
   const [downloadLink, setDownloadLink] = useState(<div/>);
   const [content, setContent] = useState(
     (<div>
@@ -45,7 +45,7 @@ export default function DownloadioCAD() {
     }
     
   }
-  if (session && firstTimeLoad) {
+  if (user && firstTimeLoad) {
     firstTimeLoad = false;
     setContent(
       <div className="download_button" onClick={downloadClicked} style={{color: '#020221'}}>

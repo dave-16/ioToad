@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import {useSession, signIn, signOut} from 'next-auth/react'
-// import {PageBackground} from '../components/background.js'
+
+import {PageBackground} from '../components/background.js'
 import {Header} from '../components/header'
 import {Footer} from '../components/footer'
 import Image from 'next/image';
@@ -9,7 +9,11 @@ import { OrbitControls } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { IFCLoader } from 'three/examples/jsm/loaders/IFCLoader';
 import { SignInPopup } from '../components/signin_popup.js'
+import {Login} from './login'
+import {Signup} from './signup';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useRouter } from 'next/router'
 
 const Model = () => {
   const ifcloader = new IFCLoader();
@@ -24,18 +28,19 @@ const Model = () => {
 export default function Iocad() {
 
   const [signinComponent, setSigninComponent] = useState(<div/>);
-    const {data: session} = useSession();
+  const { user, logout } = useAuth()
+
     function downloadClicked() {
-      if (session) {
+      if (user) {
         
       } else {
-        setSigninComponent(<SignInPopup />);
+        setSigninComponent(<SignInPopup/> );
       }
     }
     return (
       <div className='wrapper_div'>
         {/* <PageBackground /> */}
-        {signinComponent}
+        
         <Header />
         <main className="container_main" style={{padding: '5%'}}>
           <div className='download_div'>

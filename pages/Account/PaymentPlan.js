@@ -1,20 +1,19 @@
 // import {PageBackground} from '../components/background.js'
 import {AccountHeader} from '../../components/accountHeader'
 import {Footer} from '../../components/footer'
-import Image from 'next/image';
 import { Package } from '../../components/package';
 import {LottieViewer} from '../../components/lottie'
-import {useSession, signIn, signOut} from 'next-auth/react'
 import { SignInPopup } from '../../components/signin_popup';
 import Link from 'next/link'
 import { useState } from 'react';
 import { db } from '../../firebase.config';
 import { doc, getDocFromCache, getDocs, collection, getDoc } from 'firebase/firestore'
 import { Button, Input, TextField } from '@material-ui/core';
+import { useAuth } from '../../context/AuthContext';
 
 var firstTimeLoad = true;
 export default function PaymentPlan() {
-  const {data: session} = useSession({required: true,});
+  const {user} = useAuth({required: true,});
   const [content, setContent] = useState(
     (<div>
         <p>Please signin to continue</p>
@@ -43,7 +42,7 @@ export default function PaymentPlan() {
     window.localStorage.setItem('plan', 'premium');
   }
   console.log(currentPlan)
-  if (session && firstTimeLoad) {
+  if (user && firstTimeLoad) {
     firstTimeLoad = false;
     setContent(
       <div style={{width: '100%'}}>
@@ -119,7 +118,7 @@ export default function PaymentPlan() {
         <main style={{position: 'absolute', width: '100%', padding: '0% 5%'}}>
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
             <h2>Payment Plan</h2>
-              {session ? <p style={{textAlign: 'center'}}>Choose the package that suits you: {currentPlan}</p> : null}
+              {user ? <p style={{textAlign: 'center'}}>Choose the package that suits you: {currentPlan}</p> : null}
             {content}
           </div>
           <Footer />

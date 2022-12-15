@@ -4,27 +4,15 @@ import {Footer} from '../../components/footer'
 import Image from 'next/image';
 import {LottieViewer} from '../../components/lottie'
 import { SignInPopup } from '../../components/signin_popup';
+import { SignUpPopup } from '../../components/signup_popup';
 import { useState } from 'react';
 import { Account } from './index';
 import { useAuth } from '../../context/AuthContext';
 import {Login} from '../login'
-import { Form } from 'react-bootstrap';
 
 export default function Signin() {
   // const {data: session} = useSession();
   const {user,logout} =useAuth();
-   
-  const handleSignout = async (e) => {
-    e.preventDefault()
-
-    console.log(user)
-    try {
-      await logout(user)
-      router.push('/')
-    } catch (err) {
-      console.log(err)
-    }
-  }
     return (
       <>
         {
@@ -35,16 +23,14 @@ export default function Signin() {
           <div style={{display: 'grid', placeItems: 'center', marginTop: '50px'}}>
             <h2>Account Settings</h2>
             <p>You are already signed in</p>
-            <Form onSubmit={handleSignout}>
-            <Button className="header_button" type='submit'>
+            <div className="header_button" onClick={() => logout}>
                 <p>Sign out</p>
-            </Button>
-            </Form>
+            </div>
           </div>
           <Footer />
         </main>
       </div> :
-          <SignInPopup/> 
+          <SignUpPopup/> 
         }
       </>
     )
